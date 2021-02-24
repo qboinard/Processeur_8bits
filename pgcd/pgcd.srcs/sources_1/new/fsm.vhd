@@ -32,7 +32,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity fsm is
---  Port ( );
+  Port (RST     : in std_logic;
+        CLK     : in std_logic;
+        CE      : in std_logic;
+        carry   : in std_logic;
+        code_OP : in std_logic_vector(1 downto 0);
+        A, B, C, D, E, F, G, H, I, J, K, L : out std_logic);
 end fsm;
 
 architecture Behavioral of fsm is
