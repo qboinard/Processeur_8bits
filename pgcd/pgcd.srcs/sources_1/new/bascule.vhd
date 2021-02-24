@@ -22,16 +22,18 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity bascule is
-    
+   
     port
     (
-        CE                  : in    std_logic;
-        H                   : in    std_logic;
-        RST                 : in    std_logic;
-        Load_registre_data  : in    std_logic;
+        CE              : in    std_logic;
+        H               : in    std_logic;
+        RST             : in    std_logic;
 
-        data_in             : in    std_logic_vector(7 downto 0);
-        data_out            : out   std_logic_vector(7 downto 0)
+        Load_carry      : in    std_logic;
+        Init_carry      : in    std_logic;
+
+        data_in         : in    std_logic;
+        data_out        : out   std_logic
     );
 
 end bascule;
@@ -41,16 +43,18 @@ architecture Behavioral of bascule is
     Process (H, RST)
     Begin
         if (RST = '1') then
-            data_out <= (others=>'0');
+            data_out <= '0';
 
         elsif (H'event and H = '1') then
             if (CE = '1') then
-                if (Load_registre_data = '1') then
+                if (Init_carry = '1') then
+                    data_out <= '0';
+                elsif (Load_carry = '1') then
                     data_out <= data_in;
                 end if;
             end if;
-
         end if;
+
     end Process;
 
 begin
