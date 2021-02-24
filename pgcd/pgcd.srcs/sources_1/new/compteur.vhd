@@ -39,7 +39,7 @@ entity compteur is
         load_cpt : in  std_logic;
         en_cpt   : in  std_logic;
         data_in  : in  std_logic_vector (5 downto 0);
-        data_out : out std_logic_vector (5 downto 0))
+        data_out : out std_logic_vector (5 downto 0));
 end compteur;
 
 architecture Behavioral of compteur is
@@ -48,11 +48,11 @@ begin
     process (H, RST)
     begin
         if (RST = '1') then
-            cpt = 0;
+            cpt <= (others => '0');
         elsif (H'event and H = '1') then
             if(CE = '1') then
                 if (init_cpt = '1') then
-                    cpt <= 0;
+                    cpt <= (others => '0');
                 elsif (load_cpt = '1') then
                     cpt <= unsigned(data_in);
                 elsif (en_cpt = '1') then
