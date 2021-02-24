@@ -32,12 +32,20 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity mux is
---  Port ( );
+  Port ( sel : in  std_logic;
+         data_reg : in  std_logic_vector(5 downto 0);
+         data_cpt : in  std_logic_vector(5 downto 0);
+         data_out : out std_logic_vector(5 downto 0));
 end mux;
 
 architecture Behavioral of mux is
-
 begin
-
-
+    process (sel, data_reg, data_cpt)
+    begin
+        if (sel = '0') then
+            data_out <= data_cpt;
+        else
+            data_out <= data_reg;
+        end if;
+    end process;
 end Behavioral;
