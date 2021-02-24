@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 02/24/2021 10:30:42 AM
+-- Create Date: 02/24/2021 10:34:09 AM
 -- Design Name: 
--- Module Name: fsr - Behavioral
+-- Module Name: fsm_tb - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,11 +31,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity fsr is
+entity fsm_tb is
 --  Port ( );
-end fsr;
+end fsm_tb;
 
-architecture Behavioral of fsr is
+architecture Behavioral of fsm_tb is
 
 begin
 
