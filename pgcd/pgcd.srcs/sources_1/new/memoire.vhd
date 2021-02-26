@@ -36,17 +36,17 @@ entity memoire is
 
     Port
     (
-        CE              : in    std_logic;
-        H               : in    std_logic;
+        CE         : in  std_logic;
+        H          : in  std_logic;
 
-        Enable_memoire  : in    std_logic;
-        Read_write      : in    std_logic;
+        Enable_mem : in  std_logic;
+        Read_write : in  std_logic;
         -- Read_write = 1 => write
         -- .......... = 0 => read
 
-        Adresse         : in    std_logic_vector(5 downto 0);
-        data_write      : in    std_logic_vector(7 downto 0);
-        data_read       : out    std_logic_vector(7 downto 0)
+        Adresse    : in  std_logic_vector(5 downto 0);
+        data_write : in  std_logic_vector(7 downto 0);
+        data_read  : out std_logic_vector(7 downto 0)
     ); 
 
 end memoire;
@@ -61,11 +61,13 @@ begin
     Process (H)
     Begin
         if (clk'event and clk = '1') then
-            if (Read_write = '1') then
-                -- Ecriture
-                mem(to_integer(unsigned(Adresse))) <= data_write;
-            else
-                data_read <= mem(to_integer(unsigned(Adresse)));
+            if (Enable_Mem = '1') then
+                if (Read_write = '1') then
+                    -- Ecriture
+                    mem(to_integer(unsigned(Adresse))) <= data_write;
+                else
+                    data_read <= mem(to_integer(unsigned(Adresse)));
+                end if;
             end if;
         end if;
     end process;

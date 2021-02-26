@@ -26,7 +26,7 @@ entity ut is
     port
     (
         CE              : in    std_logic;
-        Clk               : in    std_logic;
+        Clk             : in    std_logic;
         RST             : in    std_logic;
 
         SEL_UAL         : in    std_logic;
