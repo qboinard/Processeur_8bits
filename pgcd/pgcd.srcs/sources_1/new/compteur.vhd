@@ -33,7 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity compteur is
   Port (RST      : in  std_logic;
-        H        : in  std_logic;
+        CLK      : in  std_logic;
         CE       : in  std_logic;
         init_cpt : in  std_logic;
         load_cpt : in  std_logic;
@@ -45,11 +45,11 @@ end compteur;
 architecture Behavioral of compteur is
     signal cpt : unsigned (5 downto 0);
 begin
-    process (H, RST)
+    process (CLK, RST)
     begin
         if (RST = '1') then
             cpt <= (others => '0');
-        elsif (H'event and H = '1') then
+        elsif (CLK'event and CLK = '1') then
             if(CE = '1') then
                 if (init_cpt = '1') then
                     cpt <= (others => '0');
