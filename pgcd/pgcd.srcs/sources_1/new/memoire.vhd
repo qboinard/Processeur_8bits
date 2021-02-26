@@ -37,7 +37,7 @@ entity memoire is
     Port
     (
         CE         : in  std_logic;
-        H          : in  std_logic;
+        CLK        : in  std_logic;
 
         Enable_mem : in  std_logic;
         Read_write : in  std_logic;
@@ -53,14 +53,14 @@ end memoire;
 
 architecture Behavioral of memoire is
 
-    Type memory is array (63 donwto 0) of std_logic_vector (7 downto 0);
-    signal mem : memory;
+    Type memory is array (0 to 63) of std_logic_vector (7 downto 0);
+    signal mem : memory := (X"47", X"86", others => "00000000");
 
 begin
 
-    Process (H)
+    Process (CLK)
     Begin
-        if (clk'event and clk = '1') then
+        if (CLK'event and CLK = '1') then
             if (Enable_Mem = '1') then
                 if (Read_write = '1') then
                     -- Ecriture
