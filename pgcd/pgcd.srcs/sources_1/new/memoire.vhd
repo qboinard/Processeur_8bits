@@ -53,7 +53,7 @@ end memoire;
 
 architecture Behavioral of memoire is
 
-    Type memory is array (64 donwto 0) of std_logic_vector (7 downto 0);
+    Type memory is array (63 donwto 0) of std_logic_vector (7 downto 0);
     signal mem : memory;
 
 begin
