@@ -41,7 +41,7 @@ entity fsm is
 end fsm;
 
 architecture Behavioral of fsm is
-type etat is (init, f_instruction, decode, f_operande, exec_ual, exec_sta, exec_jcc)
+type etat is (init, f_instruction, decode, f_operande, exec_ual, exec_sta, exec_jcc);
   signal etat_present, etat_suivant : etat;
 begin
   process (etat_present, RST, carry, code_OP)
@@ -81,7 +81,7 @@ begin
     end if;
   end process;
 
-  process (etat_present, A, B, C, D, E, F, G, H, I, J, K, L)
+  process (etat_present)
   begin
     case etat_present is
       when init =>

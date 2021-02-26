@@ -39,7 +39,7 @@ entity ut is
         
         data_in         : in    std_logic_vector(7 downto 0);
         data_out        : out   std_logic_vector(7 downto 0)
-    };
+        );
 end ut;
 
 architecture Behavioral of ut is
@@ -48,13 +48,13 @@ architecture Behavioral of ut is
     signal Sig_Reg_Accu_out : std_logic_vector(7 downto 0);
     signal Sig_UAL_out      : std_logic_vector(7 downto 0);
 
-    signal Sig_carry            : std_logic;
+    signal Sig_carry        : std_logic;
 
 
     component registre
         Port (
             CE              : in    std_logic;
-            Clk             : in    std_logic;
+            CLK             : in    std_logic;
             RST             : in    std_logic;
             Load_registre   : in    std_logic;
             data_in         : in    std_logic_vector(7 downto 0);
@@ -62,7 +62,7 @@ architecture Behavioral of ut is
         );
     end component;
 
-    component UAL
+    component ual
         Port (
             sel_UAL  : in  std_logic;
             data_reg : in  std_logic_vector(7 downto 0);
@@ -85,8 +85,7 @@ architecture Behavioral of ut is
     end component;
 
 begin
-
-    UAL : UAL port map (
+    ual_comp : ual port map (
         sel_UAL  => Sel_UAL,
         data_reg => Sig_Reg_Data_out,
         accu_reg => Sig_Reg_Accu_out,
@@ -94,7 +93,7 @@ begin
         data_out => Sig_UAL_out
     );
 
-    Bascule : Bascule port map (
+    bascule_comp : bascule port map (
         CE         => CE,
         Clk        => Clk,
         RST        => RST,
@@ -120,9 +119,7 @@ begin
         Load_registre => Load_Reg_Accu,
         data_in       => Sig_UAL_out,
         data_out      => Sig_Reg_Accu_out
-    )
-
-
+    );
+    
     data_out <= Sig_Reg_Accu_out;
-
 end Behavioral;
