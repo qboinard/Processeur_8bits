@@ -26,7 +26,7 @@ entity registre is
     port
     (
         CE              : in    std_logic;
-        H               : in    std_logic;
+        CLK             : in    std_logic;
         RST             : in    std_logic;
         Load_registre   : in    std_logic;
         data_in         : in    std_logic_vector(7 downto 0);
@@ -36,11 +36,11 @@ end registre;
 
 architecture Behavioral of registre is
 begin
-    Process (H, RST)
+    Process (CLK, RST)
     Begin
         if (RST = '1') then
             data_out <= (others=>'0');
-        elsif (H'event and H = '1') then
+        elsif (CLK'event and CLK = '1') then
             if (CE = '1') then
                 if (Load_registre = '1') then
                     data_out <= data_in;

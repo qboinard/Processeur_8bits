@@ -25,7 +25,7 @@ entity bascule is
     port
     (
         CE              : in    std_logic;
-        H               : in    std_logic;
+        CLK             : in    std_logic;
         RST             : in    std_logic;
         Load_carry      : in    std_logic;
         Init_carry      : in    std_logic;
@@ -36,11 +36,11 @@ end bascule;
 
 architecture Behavioral of bascule is
 begin
-    Process (H, RST)
+    Process (CLK, RST)
     Begin
         if (RST = '1') then
             data_out <= '0';
-        elsif (H'event and H = '1') then
+        elsif (CLK'event and CLK = '1') then
             if (CE = '1') then
                 if (Init_carry = '1') then
                     data_out <= '0';
