@@ -1,8 +1,5 @@
-*.jou
-*.str
-*.log
-*.xml
-*.wdf
-*.jou
-*.xpr
-*.log
+# Ignore everything
+*
+
+# But not these files...
+!pgcd/pgcd.srcs/
